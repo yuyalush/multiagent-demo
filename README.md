@@ -109,7 +109,17 @@ AZURE_OPENAI_API_VERSION=2024-02-15-preview
 
 ## 使用方法
 
-### デモモードの実行
+### クイックスタート（Azure認証情報なしで試す）
+
+Azure OpenAI Serviceの認証情報がない場合、まずモックデモで動作を確認できます：
+
+```bash
+python mock_demo.py
+```
+
+このモックデモでは、実際のAPIを呼び出さずに、システムの動作フローを確認できます。
+
+### 完全版の実行（Azure OpenAI Service使用）
 
 ```bash
 python main.py
@@ -173,7 +183,9 @@ multiagent-demo/
 ├── requirements.txt           # Pythonパッケージの依存関係
 ├── .env.example              # 環境変数のテンプレート
 ├── .gitignore                # Git除外設定
-├── main.py                   # メインエントリーポイント
+├── main.py                   # メインエントリーポイント（Azure OpenAI使用）
+├── mock_demo.py              # モックデモ（認証情報不要）
+├── test_structure.py         # システム構造の検証テスト
 ├── orchestrator_agent.py     # オーケストレーターエージェント
 ├── technical_agent.py        # 技術仕様エージェント
 └── business_agent.py         # ビジネス分析エージェント
