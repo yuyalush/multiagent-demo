@@ -2,6 +2,7 @@
 Orchestrator Agent: マルチエージェントシステムのオーケストレーター
 Coordinates between sub-agents to provide comprehensive answers
 """
+import json
 from typing import Dict, Any, List
 from technical_agent import TechnicalAgent
 from business_agent import BusinessAgent
@@ -56,12 +57,11 @@ class OrchestratorAgent:
             )
             
             content = response.choices[0].message.content
-            # JSONパースを試みる（簡易版）
-            import json
+            # JSONパースを試みる
             try:
                 result = json.loads(content)
                 return result
-            except:
+            except (json.JSONDecodeError, ValueError):
                 # JSON形式でない場合は、キーワードから判断
                 content_lower = content.lower()
                 if "technical" in content_lower:
